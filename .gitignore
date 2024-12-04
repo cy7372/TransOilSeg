@@ -3,8 +3,18 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Project-specific Generated Data
+datasets/
+results/
+models/
+debug.ipynb
+
+
 # C extensions
 *.so
+
+# Compressed files
+*.zip
 
 # Distribution / packaging
 .Python

@@ -1,0 +1,44 @@
+# configs/tos/M4D.yaml
+
+# 模型配置
+model_name: 'TransOilSeg'
+task: 'segmentation'
+img_size: 224
+num_classes: 5
+# conf_threshold: 0.5
+
+# 数据集配置
+datasets:
+  - name: 'M4D_dataset'
+    path: 'datasets/M4D'
+    train: 
+      - 'train'
+    test: 
+      - 'test'
+
+# transfer_weights: 'results/LoveDA/FLaTO_best.pth'
+
+# 训练配置
+batch_size: 16
+num_epochs: 500
+learning_rate: 0.001
+model_save_dir: './results/M4D/TOS/TL'
+# weights: './results/FLaTO/data_v1.2'
+
+# EarlyStopping配置
+patience: 50
+delta: 0.005
+
+# 权重加载模式
+load_mode: best
+
+# 损失函数配置
+loss: 'jaccard,dice,ce'
+loss_weights: '0.5,0.25,0.25'
+
+# 损失函数配置
+loss: 'dice,ce'
+loss_weights: '0.5,0.5'
+
+# 评估指标
+metrics: mIoU,precision,recall,f1_score

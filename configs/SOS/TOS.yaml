@@ -1,0 +1,40 @@
+# configs/tos/M4D.yaml
+
+# 模型配置
+model_name: 'TransOilSeg'
+task: 'segmentation'
+img_size: 224
+num_classes: 2
+
+# 数据集配置
+datasets:
+  - name: 'SOS_dataset'
+    path: 'datasets/SOS/palsar'
+    train: 
+      - 'train'
+    test: 
+      - 'test'
+
+# transfer_weights: 'results/IwDA/FLaTO_best.pth'
+
+# 训练配置
+batch_size: 16
+num_epochs: 500
+learning_rate: 0.001
+model_save_dir: './results/SOS/TOS'
+# weights: './results/FLaTO/data_v1.2'
+
+# EarlyStopping配置
+patience: 50
+delta: 0.005
+
+# 权重加载模式
+load_mode: best
+
+# 损失函数配置
+loss: 'ce'
+# 可选权重参数：仅在多损失函数情况下启用
+# loss_weights: '0.7,0.3'
+
+# 评估指标
+metrics: mIoU,precision,recall,f1_score
