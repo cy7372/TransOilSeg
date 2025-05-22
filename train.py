@@ -100,7 +100,7 @@ def main():
         val_loss = validate(net, val_loader, criterion, device)
         print(f"Val Loss: {val_loss:.4f}")
 
-        # 每个 epoch 都保存一次
+
         net.save(epoch, optimizer=optimizer, model_dir=args.exp_path, mode=0)
         scheduler.step()
 
